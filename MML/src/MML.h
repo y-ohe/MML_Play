@@ -85,6 +85,7 @@ class MML {
     uint8_t isError()  {return err; };
     void stop() { notone(); flgRun = 0;};
     void resume() {if (*mml_text) flgRun = 1; };
+    uint8_t isFinished() {return ((playMode == 0) && (flgRun == 0));};
 };
 
 #endif

@@ -330,7 +330,13 @@ void MML::playTick(uint8_t flgTick) {
     }
   }
   if ((!*mml_ptr && available()) || isError() ) {
-    flgRun = 0;    // 演奏終了
-    playMode = 0;
+    if(repeat) {
+      mml_ptr = mml_text;              // 先頭からの演奏
+      flgRun = 1;
+      playMode = 2; // バックグランド演奏
+    } else {
+      flgRun = 0;    // 演奏終了
+      playMode = 0;
+    }
   }
 }
